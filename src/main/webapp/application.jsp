@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: bree2
+  User: Abriana Fornis
   Date: 5/3/22
   Time: 8:20 PM
   To change this template use File | Settings | File Templates.
@@ -9,15 +9,41 @@
 <html>
 <head>
     <title>Business Application</title>
+    <style>
+        body {
+            padding-top: 5%;
+        }
+        div#nav-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            background-color: aquamarine;
+            color: #2b2d2f;
+            width: 100%;
+            height: 35px;
+        }
+        a {
+            text-decoration: none;
+            color: #2b2d2f;
+        }
+        td {
+            padding-right: 2%;
+        }
+        table#navigation-menu {
+            background-color: aquamarine;
+            width: 20%;
+        }
+    </style>
 </head>
 <body>
-    <header id="nav-container">
-        <table id="navigation-menu" style="list-style-type: none;">
-            <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
-            <td><a href="login" style="text-decoration: none;list-style-type: none;">Login</a></td>
-            <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">About</a></td>
+    <div id="nav-container">
+        <table id="navigation-menu" align="right">
+            <td><a href="home">Home</a></td>
+            <td><a href="login">Login</a></td>
+            <td><a href="#" onclick="return false;">About</a></td>
         </table>
-    </header>
+    </div>
     <%
         if (request.getParameter("a") != null) {
             out.println("Oh no! Looks like that username is taken ...");

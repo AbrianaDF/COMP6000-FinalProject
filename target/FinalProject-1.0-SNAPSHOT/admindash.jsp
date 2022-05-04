@@ -1,10 +1,10 @@
-<%@ page import="java.sql.*" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: bree2
+  User: Abriana Fornis
   Date: 5/3/22
   Time: 7:18 PM
-  To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "BreeF#11");
@@ -18,11 +18,39 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="WEB-INF/css/styles.css" type="text/css">
+    <style>
+        body {
+            padding-top: 5%;
+        }
+        div#nav-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            background-color: aquamarine;
+            color: #2b2d2f;
+            width: 100%;
+            height: 35px;
+        }
+        a {
+            text-decoration: none;
+            color: #2b2d2f;
+        }
+        td {
+            padding-right: 2%;
+        }
+        table#navigation-menu {
+            background-color: aquamarine;
+            width: 20%;
+        }
+        table#pending-approvals {
+            width: 700px;
+        }
+    </style>
 </head>
     <body>
-        <header id="nav-container">
-            <table id="navigation-menu">
+        <div id="nav-container">
+            <table id="navigation-menu" align="right">
                 <tr>
                     <td><a href="index.jsp">Home</a></td>
                     <td><a href="about.jsp">About</a></td>
@@ -30,16 +58,16 @@
                     <td><a href="logout.jsp">Logout</a></td>
                 </tr>
             </table>
-        </header>
+        </div>
         <div id="content-wrapper">
             <form name="admin-approval-form" method="post" action="application">
-                <label id="admin-dash-approvals-label" for="pending-approvals">Pending Approvals</label>
-                <table id="pending-approvals" name="pending-approvals">
+                <h1>Pending Approvals</h1>
+                <table id="pending-approvals" name="pending-approvals" cellspacing="20px">
                     <thead>
                         <tr>
-                            <td>Business</td>
-                            <td>Owner</td>
-                            <td>Approval</td>
+                            <td><h3>Business</h3></td>
+                            <td><h3>Owner</h3></td>
+                            <td><h3>Approval</h3></td>
                         </tr>
                     </thead>
                     <%

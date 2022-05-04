@@ -1,3 +1,9 @@
+/*
+    Created by IntelliJ IDEA.
+    User: Abriana Fornis
+    Date: 5/3/22
+    Time: 7:18 PM
+*/
 package com.example.finalproject.servlets;
 
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +24,6 @@ public class ApplicationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String business = request.getParameter("pending-business");
-        System.out.println("Business approved/denied: " + business);
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "BreeF#11")) {
             String sql = " ";

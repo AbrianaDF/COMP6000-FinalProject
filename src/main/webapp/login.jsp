@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: bree2
+  User: Abriana Fornis
   Date: 4/26/22
   Time: 10:22 PM
   To change this template use File | Settings | File Templates.
@@ -9,17 +9,43 @@
 <html>
     <head>
         <title>Login</title>
+        <style>
+            body {
+                padding-top: 5%;
+            }
+            div#nav-container {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                background-color: aquamarine;
+                color: #2b2d2f;
+                width: 100%;
+                height: 35px;
+            }
+            a {
+                text-decoration: none;
+                color: #2b2d2f;
+            }
+            td {
+                padding-right: 2%;
+            }
+            table#navigation-menu {
+                background-color: aquamarine;
+                width: 20%;
+            }
+        </style>
     </head>
     <body>
-        <header id="nav-container">
-            <table id="navigation-menu" style="list-style-type: none;">
+        <div id="nav-container">
+            <table id="navigation-menu" align="right">
                 <tr>
-                    <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
-                    <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">Login</a></td>
-                    <td><a href="about.jsp" style="text-decoration: none;list-style-type: none;">About</a></td>
+                    <td><a href="home">Home</a></td>
+                    <td><a href="about.jsp">About</a></td>
+                    <td><a href="#" onclick="return false;">Login</a></td>
                 </tr>
             </table>
-        </header>
+        </div>
         <%
             if (request.getParameter("b") != null) {
                 out.println("You must sign in first!");

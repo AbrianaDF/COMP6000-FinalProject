@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Abriana Fornis
+  Date: 4/27/22
+  Time: 5:48 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="com.example.finalproject.models.BusinessModel" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -5,10 +12,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
-    try {
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "BreeF#11")) {
         List<BusinessModel> businessList = new ArrayList<>();
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "BreeF#11");
         Statement stmt = connection.createStatement();
         String sql1 = "SELECT businesses.name, businesses.description, businesses.is_pending, users.fname, users.lname, businesses.phone, businesses.website" +
                 " FROM businesses" +
@@ -29,28 +35,69 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="WEB-INF/css/styles.css" type="text/css">
+        <title>Business Directory</title>
+        <style>
+            body {
+                padding-top: 5%;
+            }
+            div#nav-container {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                background-color: aquamarine;
+                color: #2b2d2f;
+                width: 100%;
+                height: 35px;
+            }
+            div.business-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                grid-auto-rows: auto;
+                grid-gap: 5rem;
+                padding: 3%;
+            }
+            div.business-card {
+                border: 2px solid #e7e7e7;
+                border-radius: 4px;
+                padding: .5rem;
+            }
+            a {
+                text-decoration: none;
+                color: #2b2d2f;
+            }
+            td {
+                padding-right: 2%;
+            }
+            table#navigation-menu {
+                align: right;
+                background-color: aquamarine;
+                width: 20%;
+            }
+            p#business-desc {
+                width: 80%;
+            }
+        </style>
     </head>
     <body>
-        <header id="nav-container" style="background-color: aquamarine">
+        <div id="nav-container">
             <table id="navigation-menu" align="right">
                 <tr>
-                    <td style="padding-right: 5px"><a class="nav-link" href="#" onclick="return false;">Home</a></td>
-                    <td style="padding-right: 5px"><a class="nav-link" href="about.jsp">About</a></td>
-                    <td style="padding-right: 5px">
+                    <td><a class="nav-link" href="#" onclick="return false;">Home</a></td>
+                    <td><a class="nav-link" href="about.jsp">About</a></td>
+                    <td>
                         <%
                             if (session.getAttribute("uname") != null) {
                         %>
                         <a class="nav-link" href="dashboard">Dashboard</a>
                     </td>
-                    <td style="padding-right: 5px">
+                    <td>
                         <a class="nav-link" href="logout.jsp">Logout</a>
                     </td>
                         <%
                             } else {
                         %>
-                    <td style="padding-right: 5px">
+                    <td>
                         <a class="nav-link" href="login.jsp">Login</a>
                         <%
                                 }
@@ -58,21 +105,18 @@
                     </td>
                 </tr>
             </table>
-        </header>
+        </div>
 
-        <h1>Welcome!</h1>
+        <h1>Business Directory</h1>
+        <div class="business-container">
         <% for (BusinessModel business : businessList) { %>
-        <div>
-            <h2><%=business.getName()%></h2>
-            <p><%=business.getDescription()%></p>
-            <br/>
-            <div>
+            <div class="business-card">
+                <h2><%=business.getName()%></h2>
+                <p id="business-desc"><%=business.getDescription()%></p>
                 <h3><%=business.getOwner()%></h3>
                 <h4><%=business.getPhone()%></h4>
                 <a href="#"><%=business.getWebsite()%></a>
-                <br/>
             </div>
-        </div>
         <%
                 }
             } catch (SQLException e) {
@@ -80,5 +124,6 @@
                 e.printStackTrace();
             }
         %>
+        </div>
     </body>
 </html>

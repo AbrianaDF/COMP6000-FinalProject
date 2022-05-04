@@ -1,23 +1,67 @@
 <%--
   Created by IntelliJ IDEA.
-  User: bree2
+  User: Abriana Fornis
   Date: 4/27/22
   Time: 5:48 PM
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>About Us</title>
+    <style>
+        body {
+            padding-top: 5%;
+        }
+        div#nav-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            background-color: aquamarine;
+            color: #2b2d2f;
+            width: 100%;
+            height: 35px;
+        }
+        a {
+            text-decoration: none;
+            color: #2b2d2f;
+        }
+        td {
+            padding-right: 2%;
+        }
+        table#navigation-menu {
+            background-color: aquamarine;
+            width: 20%;
+        }
+    </style>
 </head>
 <body>
-    <header id="nav-container">
-        <table id="navigation-menu" style="list-style-type: none;">
-            <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
-            <td><a href="login" style="text-decoration: none;list-style-type: none;">Login</a></td>
-            <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">About</a></td>
+    <div id="nav-container">
+        <table id="navigation-menu" align="right">
+            <tr>
+                <td><a class="nav-link" href="index.jsp">Home</a></td>
+                <td><a class="nav-link" href="#" onclick="return false;">About</a></td>
+                <td>
+                    <%
+                        if (session.getAttribute("uname") != null) {
+                    %>
+                    <a class="nav-link" href="dashboard">Dashboard</a>
+                </td>
+                <td>
+                    <a class="nav-link" href="logout.jsp">Logout</a>
+                </td>
+                <%
+                } else {
+                %>
+                <td>
+                    <a class="nav-link" href="login.jsp">Login</a>
+                    <%
+                        }
+                    %>
+                </td>
+            </tr>
         </table>
-    </header>
+    </div>
     <h1>A Little Bit About Us</h1>
     <div style="width: 70%">
         <p style="padding: 5%">This website was created to provide a place for people to find minority-owned businesses. We take pride in

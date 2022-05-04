@@ -33,13 +33,16 @@ public class LoginServlet extends HttpServlet {
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     user.setAdmin(rs.getBoolean("is_admin"));
+                    session.setAttribute("user", user);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        } else {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
-        session.setAttribute("user", user);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+
     }
 }
