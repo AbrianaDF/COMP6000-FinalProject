@@ -9,7 +9,6 @@
     </properties>
     <root id="archive" name="FinalProject-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="FinalProject:war exploded" />
-      <element id="library" level="project" name="mysql-connector-java-8.0.25" />
     </root>
   </artifact>
 </component>

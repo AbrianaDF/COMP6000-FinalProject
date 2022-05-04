@@ -11,20 +11,20 @@
     <title>About Us</title>
 </head>
 <body>
-    <div id="nav-container">
-        <ul id="navigation-menu" style="list-style-type: none;">
-            <li><a href="HomeServlet" style="text-decoration: none;list-style-type: none;">Home</a></li>
-            <li><a href="LoginServlet" style="text-decoration: none;list-style-type: none;">Login</a></li>
-            <li><a href="AboutServlet" style="text-decoration: none;list-style-type: none;">About</a></li>
-        </ul>
-    </div>
+    <header id="nav-container">
+        <table id="navigation-menu" style="list-style-type: none;">
+            <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
+            <td><a href="login" style="text-decoration: none;list-style-type: none;">Login</a></td>
+            <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">About</a></td>
+        </table>
+    </header>
     <h1>A Little Bit About Us</h1>
-    <div>
-        <p>This website was created to provide a place for people to find minority-owned businesses. We take pride in
+    <div style="width: 70%">
+        <p style="padding: 5%">This website was created to provide a place for people to find minority-owned businesses. We take pride in
             providing a space for minority-owned businesses to truly shine. Feel free to take a look around! If you
             would like to have your business included in the directory, don't hesitate to click <i>Apply</i> below!
         </p>
-        <form name="appRequest" method="get" action="AppServlet">
+        <form name="appRequest" method="get" action="application.jsp">
             <input type="submit" value="Apply">
         </form>
     </div>

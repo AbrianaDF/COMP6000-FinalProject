@@ -1,23 +1,12 @@
-package com.example.finalproject;
+package com.example.finalproject.models;
 
-public class Business {
+public class BusinessModel {
     private String name;
     private String owner;
     private String phone;
     private String description;
     private String website;
-
-    public Business(String name, String owner, String phone, String description, String website) {
-        this.name = name;
-        this.owner = owner;
-        this.phone = phone;
-        this.description = description;
-        this.website = website;
-    }
-
-    public Business() {
-
-    }
+    private boolean isPending;
 
     public String getName() {
         return name;
@@ -57,5 +46,13 @@ public class Business {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public boolean isPending() {
+        return isPending;
+    }
+
+    public void setPending(boolean pending) {
+        isPending = pending;
     }
 }

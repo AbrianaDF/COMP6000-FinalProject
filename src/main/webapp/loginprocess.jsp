@@ -12,19 +12,19 @@
     // mysql database to work with your project. Go to,
     // Your project -> right click -> properties -> Libraries -> Compiler tab -> Add library -> select "MySQL JDBC Driver" library -> Ok
     Class.forName("com.mysql.jdbc.Driver"); //to connect mysql database
-    conn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "");  //connection with database.. demo: db name, username:root, password: " "
+    conn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/businessdirectory", "root", "BreeF#11");
     st = conn.createStatement();
 
     //get parameter value by using the 'name' of the field
-    String email = request.getParameter("email");
+    String uname = request.getParameter("username");
     String password = request.getParameter("password");
 
-    String qr = "SELECT email FROM users WHERE email = '"+email+"' and password = '"+password+"'";    //query to select if the username already exists or not
+    String qr = "SELECT username FROM users WHERE username = '"+uname+"' and password = '"+password+"'";    //query to select if the username already exists or not
     rs = st.executeQuery(qr);
     if(rs.next())
     {
-        // if username or password is correct
-        session.setAttribute("uname", email);          //session created... name: 'uname' and value: 'email' of the user
+        // if username and password is correct
+        session.setAttribute("uname", uname);
         response.sendRedirect("index.jsp");
     }
     else
@@ -32,6 +32,6 @@
         // if username or password is incorrect
         // passing variable "c" with URL
         // lets say "c" is for "username/password is incorrect"
-        response.sendRedirect("index.jsp?c");
+        response.sendRedirect("login.jsp?c");
     }
 %>

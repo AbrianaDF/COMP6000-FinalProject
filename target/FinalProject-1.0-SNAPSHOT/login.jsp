@@ -11,22 +11,29 @@
         <title>Login</title>
     </head>
     <body>
-        <div id="nav-container">
-            <ul id="navigation-menu" style="list-style-type: none;">
-                <li><a href="HomeServlet" style="text-decoration: none;list-style-type: none;">Home</a></li>
-                <li><a href="LoginServlet" style="text-decoration: none;list-style-type: none;">Login</a></li>
-                <li><a href="AboutServlet" style="text-decoration: none;list-style-type: none;">About</a></li>
-            </ul>
-        </div>
+        <header id="nav-container">
+            <table id="navigation-menu" style="list-style-type: none;">
+                <tr>
+                    <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
+                    <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">Login</a></td>
+                    <td><a href="about.jsp" style="text-decoration: none;list-style-type: none;">About</a></td>
+                </tr>
+            </table>
+        </header>
+        <%
+            if (request.getParameter("b") != null) {
+                out.println("You must sign in first!");
+            }
+        %>
         <div>
-            <form method="post" action="LoginServlet">
-                <table border="0" cellpadding="5" align="center" width = "800px">
+            <form method="post" action="loginprocess.jsp">
+                <table border="0" cellpadding="5" align="center" width = "500px">
                     <tr>
                         <td colspan="2"><h3>Login</h3></td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
-                        <td><input type="text" name="email" required/></td>                  <!-- name: username -->
+                        <td>Username:</td>
+                        <td><input type="text" name="username" required/></td>                  <!-- name: username -->
                     </tr>
                     <tr>
                         <td>Password:</td>
@@ -38,7 +45,7 @@
                             <%
                                 if(request.getParameter("c")!= null) {
                                     //check the value for variable "c"
-                                    //out.println("Username or password is incorrect.!");
+                                    out.println("Username or password is incorrect.!");
                                 }
                             %>
                         </td>

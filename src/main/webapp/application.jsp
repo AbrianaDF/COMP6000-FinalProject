@@ -1,68 +1,67 @@
 <%--
   Created by IntelliJ IDEA.
   User: bree2
-  Date: 4/27/22
-  Time: 7:41 PM
+  Date: 5/3/22
+  Time: 8:20 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <head>
-        <title>Application</title>
-    </head>
-    <body>
-        <div id="nav-container" style="background-color: #2b2d2f;padding: 0;margin: 0;">
-            <ul id="navigation-menu" style="list-style-type: none;">
-                <li><a href="HomeServlet" style="text-decoration: none;list-style-type: none;color: beige">Home</a></li>
-                <li><a href="LoginServlet" style="text-decoration: none;list-style-type: none;">Login</a></li>
-                <li><a href="AboutServlet" style="text-decoration: none;list-style-type: none;">About</a></li>
-            </ul>
-        </div>
-        <form method="post" action="signup.jsp">
-            <table border="0" cellpadding="5" align="center" width = "800px">
-                <tr>
-                    <td colspan="2"><h3>Directory Application</h3></td>
-                </tr>
-                <tr>
-                    <td>Business Name</td>
-                    <td><input type="text" name="business-name" required/></td>
-                </tr>
-                <tr>
-                    <td>Business Owner</td>
-                    <td><input type="text" name="business-owner" required/></td>
-                </tr>
-                <tr>
-                    <td>Description of Business</td>
-                    <td><input type="text" name="description"></td>
-                </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><input type="tel" name="phone" required/></td>
-                </tr>
-                <tr>
-                    <td>Website</td>
-                    <td><input type="text" name="website" required/></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="email" name="email" required/></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="password" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit" /> </td>
-                    <td>
-                        <%
-                            if(request.getParameter("c")!= null) {
-                                //check the value for variable "c"
-                                //out.println("Username or password is incorrect.!");
-                            }
-                        %>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </body>
+<head>
+    <title>Business Application</title>
+</head>
+<body>
+    <header id="nav-container">
+        <table id="navigation-menu" style="list-style-type: none;">
+            <td><a href="home" style="text-decoration: none;list-style-type: none;">Home</a></td>
+            <td><a href="login" style="text-decoration: none;list-style-type: none;">Login</a></td>
+            <td><a href="#" onclick="return false;" style="text-decoration: none;list-style-type: none;">About</a></td>
+        </table>
+    </header>
+    <%
+        if (request.getParameter("a") != null) {
+            out.println("Oh no! Looks like that username is taken ...");
+        }
+    %>
+    <form method="post" name="application" action="signup.jsp">
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstname" required></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastname" required></td>
+            </tr>
+            <tr>
+                <td>Business Name:</td>
+                <td><input type="text" name="business-name" required></td>
+            </tr>
+            <tr>
+                <td>Business Description:</td>
+                <td><input type="text" name="description" required></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="tel" name="phone" required></td>
+            </tr>
+            <tr>
+                <td>Website:</td>
+                <td><input type="text" name="website" required></td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
 </html>

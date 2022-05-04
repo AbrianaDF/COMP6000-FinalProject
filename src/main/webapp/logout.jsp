@@ -17,6 +17,6 @@
     {
         // passing variable "b" with URL
         // lets say "b" is for "user must login"
-        response.sendRedirect("index.jsp?b");
+        response.sendRedirect("login.jsp?b");
     }
 %>
