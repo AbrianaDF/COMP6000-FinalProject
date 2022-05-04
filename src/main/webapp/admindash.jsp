@@ -32,7 +32,7 @@
             </table>
         </header>
         <div id="content-wrapper">
-            <form>
+            <form name="admin-approval-form" method="post" action="application">
                 <label id="admin-dash-approvals-label" for="pending-approvals">Pending Approvals</label>
                 <table id="pending-approvals" name="pending-approvals">
                     <thead>
@@ -44,12 +44,19 @@
                     </thead>
                     <%
                         while (rs.next()) {
+                            String businessName = rs.getString("name");
+                            String ownerFName = rs.getString("fname");
+                            String ownerLName = rs.getString("lname");
                     %>
                     <tr>
-                        <td><%=rs.getString("name")%></td>
-                        <td><%=rs.getString("fname") + " " + rs.getString("lname")%></td>
-                        <td><a id="approve-link" href="approvalprocess.jsp">Approve</a>/<a id="deny-link" href="denialprocess.jsp">Deny</a></td>
-                        <input type="hidden" value="<%=rs.getString("name")%>">
+                        <td><%=businessName%></td>
+                        <td><%=ownerFName + " " + ownerLName%></td>
+                        <td>
+                            <input name="approve-button" type="submit" value="Approve">
+                            <input name="deny-button" type="submit" value="Deny">
+
+                            <input name="pending-business" type="hidden" value="<%=businessName%>">
+                        </td>
                     </tr>
                     <%
                         }

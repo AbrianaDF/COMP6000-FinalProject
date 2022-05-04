@@ -32,27 +32,37 @@
             </table>
         </header>
         <div id="content-wrapper">
-            <label id="admin-dash-approvals-label" for="pending-approvals">Pending Approvals</label>
-            <table id="pending-approvals" name="pending-approvals">
-                <thead>
+            <form name="admin-approval-form" method="post" action="application">
+                <label id="admin-dash-approvals-label" for="pending-approvals">Pending Approvals</label>
+                <table id="pending-approvals" name="pending-approvals">
+                    <thead>
+                        <tr>
+                            <td>Business</td>
+                            <td>Owner</td>
+                            <td>Approval</td>
+                        </tr>
+                    </thead>
+                    <%
+                        while (rs.next()) {
+                            String businessName = rs.getString("name");
+                            String ownerFName = rs.getString("fname");
+                            String ownerLName = rs.getString("lname");
+                    %>
                     <tr>
-                        <td>Business</td>
-                        <td>Owner</td>
-                        <td>Approval</td>
+                        <td><%=businessName%></td>
+                        <td><%=ownerFName + " " + ownerLName%></td>
+                        <td>
+                            <input name="approve-button" type="submit" value="Approve">
+                            <input name="deny-button" type="submit" value="Deny">
+
+                            <input name="pending-business" type="hidden" value="<%=businessName%>">
+                        </td>
                     </tr>
-                </thead>
-                <%
-                    while (rs.next()) {
-                %>
-                <tr>
-                    <td><%=rs.getString("name")%></td>
-                    <td><%=rs.getString("fname") + " " + rs.getString("lname")%></td>
-                    <td><a id="approve-link" href="approvalprocess.jsp">Approve</a>/<a id="deny-link" href="denialprocess.jsp">Deny</a></td>
-                </tr>
-                <%
-                    }
-                %>
-            </table>
+                    <%
+                        }
+                    %>
+                </table>
+            </form>
         </div>
     </body>
 </html>
